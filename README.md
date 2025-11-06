@@ -17,3 +17,8 @@ import inspect, functions
 funcoes = [name for name, obj in inspect.getmembers(functions, inspect.isfunction)]
 print("\nFunções disponíveis:\n", "\n".join(funcoes))
 ```
+
+Example: how to read the docstring of each function:
+```python
+help(obter_dados_csv)
+```
