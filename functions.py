@@ -6,7 +6,8 @@ def obter_dados_csv(nome_arquivo, lista_sinais = ['U_PV_1', 'I_PV_1'], fs = 500)
   lista_sinais: nome dos sinais que se deseja obter
   saída 'sinais' é um vetor
   '''
-  df = pd.read_csv(nome_arquivo, sep = ' ')
+  from pandas import read_csv
+  df = read_csv(nome_arquivo, sep = ' ')
   t = np.arange(len(df[lista_sinais[0]]))/fs;
   sinais = []
   for sinal in lista_sinais:
