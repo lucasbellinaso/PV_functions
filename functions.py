@@ -77,7 +77,6 @@ def HPF2(x, fc = 2, fs = 500, perc_init_value = 0.1):
 
 
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 def plot_interativo(t, y1, y2=None, y3=None, nome1='Sinal 1', nome2=None, nome3=None,
                     titulo=None, unidade_x='s', unidade_y='', template='plotly_white'):
