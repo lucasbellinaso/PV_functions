@@ -9,12 +9,11 @@ Universidade Federal de Santa Maria (UFSM)
 How to run in Google Colab:
 
 ```python
-# Copy and run in the first cell:
-!pip install control           # Control package must be installed in Google Colab server
-!git clone https://github.com/lucasbellinaso/PV_functions.git
-import os
-os.chdir("PythonSisoDesignApp")
-!python functions.py             # running the github code
-```
+!wget https://raw.githubusercontent.com/lucasbellinaso/PV_functions/main/functions.py
+from functions import *
 
-Available functions:
+# To check available functions:
+import inspect, functions
+funcoes = [name for name, obj in inspect.getmembers(functions, inspect.isfunction)]
+print("\nFunções disponíveis:\n", "\n".join(funcoes))
+```
