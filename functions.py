@@ -306,3 +306,29 @@ def calc_Varc_IEC63027(iarc_A: float, gap_mm: float):
     li = mu - z*s
     ls = mu + z*s
     return mu, li, ls
+
+#Funções de análise para otimização entre modelo e experimental:
+def erro_norma_Ln(y1, y2, n=2, remove_offset = False, perc_init_value = 0.1):
+  """
+  Erro norma Ln entre dois sinais y1 e y2. Ex: modelo e experimental
+  n = 1: saída é erro médio absoluto
+  n = 2: erro médio quadrático
+  perc_init_value: percentual do início do vetor para remover o offset.
+  """
+  dif = y1 - y2
+  if remove_offset:
+    dif = dif - np.mean(dif[0:int(perc_init_value*len(dif))])
+  return np.mean(np.abs(dif)**n)
+
+def erro_hpf_norma_Ln(y1, y2, n=2, fc = 2, fs = 10000, perc_init_value = 0.1):
+  """
+  Erro norma Ln entre dois sinais y1 e y2, retirando offset pelo filtro passa altas.
+  n = 1 → erro médio absoluto da diferença dos sinais, com offset removido
+  n = 2 → erro quadrático médio da diferença dos sinais, com offset removido
+  fc : frequência de corte do filtro passa-altas [Hz]
+  fs : frequência de amostragem do sinal [Hz]
+  perc_init_value: percentual para cálculo do valor inicial dos sinais.
+  """
+  dif = HPF2(y1-y2, fc, fs, perc_init_value) #remoção de offset entre os sinais
+  dif = dif - np.mean(dif[0:int(perc_init_value*len(dif))])
+  return np.mean(np.abs(dif)**n)
