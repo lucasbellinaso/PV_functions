@@ -121,7 +121,7 @@ def plot_interativo(t, y1, y2=None, y3=None, nome1='Sinal 1', nome2=None, nome3=
         template=template,
         hovermode='x unified',
         legend=dict(title="Sinais", orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
-
+        )
     fig.show()
 
 def plotVI_interativo(t, v1, v2=None, i1=None, i2=None, nome_v1='Tensão 1', nome_v2='v2',
